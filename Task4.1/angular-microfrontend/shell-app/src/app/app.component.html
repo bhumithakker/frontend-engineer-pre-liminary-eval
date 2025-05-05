@@ -1,0 +1,19 @@
+<div class="container">
+  <header>
+    <h1>{{ title }}</h1>
+    <nav>
+      <ul>
+        <li><a [routerLink]="['/']">Home</a></li>
+        <li><a [routerLink]="['/mfe1']">Micro Frontend 1</a></li>
+        <li><a [routerLink]="['/mfe2']">Micro Frontend 2</a></li>
+      </ul>
+    </nav>
+  </header>
+  <main>
+    <!-- This is where our micro-frontends will be loaded based on the route -->
+    <router-outlet></router-outlet>
+  </main>
+  <footer>
+    <p>Angular Micro-Frontend Architecture Example</p>
+  </footer>
+</div>
