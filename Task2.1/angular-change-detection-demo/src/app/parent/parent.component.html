@@ -1,0 +1,58 @@
+<div class="parent-container">
+  <h2>Parent Component</h2>
+  <p>Change Detection Count: {{ changeDetectionCount }}</p>
+
+  <section class="demo-section">
+    <h3>Object Mutation vs Immutability Demo</h3>
+    <p>User Object: {{ userObject | json }}</p>
+    <button (click)="updateUserObjectMutable()">Update Object (Mutable)</button>
+    <button (click)="updateUserObjectImmutable()">Update Object (Immutable)</button>
+  </section>
+
+  <section class="demo-section">
+    <h3>Array Mutation vs Immutability Demo</h3>
+    <button (click)="updateArrayMutable()">Update Array (Mutable)</button>
+    <button (click)="updateArrayImmutable()">Update Array (Immutable)</button>
+    <button (click)="addUser()">Add User (Mutable)</button>
+    <button (click)="addUserImmutable()">Add User (Immutable)</button>
+  </section>
+
+  <section class="demo-section">
+    <h3>Standard Rendering (No trackBy)</h3>
+    <div *ngFor="let user of userArray" class="user-card">
+      <p>ID: {{ user.id }}</p>
+      <p>Name: {{ user.name }}</p>
+      <p>Email: {{ user.email }}</p>
+    </div>
+  </section>
+
+  <section class="demo-section">
+    <h3>Optimized Rendering (with trackBy)</h3>
+    <div *ngFor="let user of userArray; trackBy: trackByUserId" class="user-card">
+      <p>ID: {{ user.id }}</p>
+      <p>Name: {{ user.name }}</p>
+      <p>Email: {{ user.email }}</p>
+    </div>
+  </section>
+
+  <!-- Child component with inputs -->
+  <h3>Child Components (OnPush Strategy)</h3>
+  
+  <div class="child-components">
+    <div class="child">
+      <h4>Regular Input Binding</h4>
+      <app-child 
+        [user]="userObject" 
+        [users]="userArray">
+      </app-child>
+    </div>
+    
+    <div class="child">
+      <h4>With Pure Pipe</h4>
+      <app-child 
+        [user]="userObject | immutability" 
+        [users]="userArray | immutability">
+      </app-child>
+    </div>
+  </div>
+</div>

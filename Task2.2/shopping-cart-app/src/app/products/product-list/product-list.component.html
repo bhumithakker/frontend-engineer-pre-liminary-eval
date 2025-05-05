@@ -1,0 +1,11 @@
+<div class="product-list">
+  <h2>Products</h2>
+  <div class="products-grid">
+    <div *ngFor="let product of products$ | async" class="product-card">
+      <h3>{{ product.name }}</h3>
+      <p class="price">{{ product.price | currency }}</p>
+      <p class="description">{{ product.description }}</p>
+      <button (click)="addToCart(product)">Add to Cart</button>
+    </div>
+  </div>
+</div>

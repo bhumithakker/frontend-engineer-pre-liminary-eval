@@ -1,0 +1,28 @@
+<div class="child-container">
+  <h3>Child Component (OnPush)</h3>
+  <div class="stats">
+    <p>Change Detection Count: <strong>{{ changeDetectionCount }}</strong></p>
+    <p>ngOnChanges Count: <strong>{{ ngOnChangesCount }}</strong></p>
+  </div>
+
+  <div class="input-data">
+    <h4>Current User Data:</h4>
+    <pre>{{ user | json }}</pre>
+  </div>
+
+  <div class="change-log" *ngIf="lastChangeLog.length > 0">
+    <h4>Last Change Details:</h4>
+    <ul>
+      <li *ngFor="let log of lastChangeLog">{{ log }}</li>
+    </ul>
+  </div>
+
+  <button (click)="forceChangeDetection()">Force Change Detection</button>
+
+  <div class="users-list">
+    <h4>Users List (with trackBy):</h4>
+    <div *ngFor="let u of users; trackBy: trackByUserId" class="user-item">
+      <p>{{ u.name }} ({{ u.email }})</p>
+    </div>
+  </div>
+</div>
